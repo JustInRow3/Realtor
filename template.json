@@ -13,7 +13,6 @@
               "state": "",
               "country": "USA"
             },
-            "advertiser_id": 2117405,
             "agent_rating": 5,
             "background_photo": {
               "href": "https://ap.rdcpix.com/1932288563/4c2f79f4bf581af4cee58694e5339a6cg-c0s.jpg"
@@ -78,21 +77,7 @@
                 "state_code": "FL"
               }
             ],
-            "mls": [
-              {
-                "member": {
-                  "id": "FAR_139F12D612D413FF0032"
-                },
-                "abbreviation": "FAR_1F0F1B85",
-                "type": "A",
-                "primary": true
-              }
-            ],
-            "mls_history": [],
-            "mls_monetization": false,
-            "nar_only": 1,
             "nick_name": "",
-            "nrds_id": "776694937",
             "office": {
               "name": "NextHome Sally Love Real Estate",
               "mls": [
@@ -150,7 +135,6 @@
               },
               "nrds_id": "856494937"
             },
-            "party_id": 58296456,
             "person_name": "Jayne Marvin , Kris Dileva, Linda Engelbrecht",
             "phones": [
               {
@@ -171,7 +155,6 @@
             },
             "recommendations_count": 131,
             "review_count": 8,
-            "role": "agent",
             "served_areas": [
               {
                 "name": "Fruitland Park",
@@ -210,58 +193,14 @@
                 "state_code": "FL"
               }
             ],
-            "settings": {
-              "share_contacts": false,
-              "full_access": false,
-              "display_listings": true,
-              "far_override": true,
-              "show_stream": true,
-              "terms_of_use": true,
-              "has_dotrealtor": false,
-              "display_sold_listings": true,
-              "display_price_range": true,
-              "display_ratings": true,
-              "loaded_from_sb": true,
-              "broker_data_feed_opt_out": false,
-              "unsubscribe": {
-                "autorecs": false,
-                "recapprove": false,
-                "account_notify": false
-              },
-              "cfb_wizard_step": "account_integration",
-              "new_feature_popup_closed": {
-                "agent_left_nav_avatar_to_profile": false
-              },
-              "profile_wizard": {
-                "realsatisfied_opt_out": false,
-                "tt_opt_out": false
-              },
-              "reviews_opt_out": {
-                "rs": false,
-                "rdc": false
-              }
-            },
             "slogan": "You are going to \"LOVE\" Your 24/7 Team",
             "specializations": [
               {
                 "name": "Providing the Ulimate Service!"
               }
             ],
-            "title": "Agent",
-            "types": "agent",
-            "user_languages": [],
             "web_url": "https://www.realtor.com/realestateagents/Jayne-Marvin-,-Kris-Dileva,-Linda-Engelbrecht_WILDWOOD_FL_2117405_776694937",
-            "zips": [
-              "32159",
-              "32162",
-              "32163",
-              "34731",
-              "34484",
-              "34785",
-              "34748"
-            ],
             "full_name": "Jayne Marvin , Kris Dileva, Linda Engelbrecht",
-            "name": "Jayne Marvin , Kris Dileva, Linda Engelbrecht, Agent",
             "agent_type": [
               "seller",
               "buyer"
@@ -271,8 +210,7 @@
                 "type": "facebook",
                 "href": "https://www.facebook.com/app_scoped_user_id/10202855925343059/"
               }
-            },
-            "feed_licenses": []
+            }
           },
           "recent_activity_date": "2024-01-04T16:54:03Z",
           "last_updated_timestamp": "2024-01-04T17:11:20.465Z",
@@ -300,18 +238,7 @@
           },
           "team_members": [
             {
-              "mls_history": [],
               "first_year": 1999,
-              "mls": [
-                {
-                  "member": {
-                    "id": "FAR_139F12D612D413FF0032"
-                  },
-                  "abbreviation": "FAR_1F0F1B85",
-                  "type": "A",
-                  "primary": true
-                }
-              ],
               "web_url": "https://www.realtor.com/realestateagents/Jayne-Marvin-,-Kris-Dileva,-Linda-Engelbrecht_WILDWOOD_FL_2117405_776694937",
               "id": "566b2816bb954c01006758f2",
               "name": "Jayne Marvin , Kris Dileva, Linda Engelbrecht, Agent",
@@ -319,357 +246,17 @@
               "photo": {
                 "href": "https://ap.rdcpix.com/814514207/2b71f4b8ee0d782cd696b43780b68061a-e0s.jpg"
               },
-              "bio": null,
-              "nrds_id": "776694937",
               "recommendations_count": 131,
-              "advertiser_id": 2117405,
               "review_count": 8,
               "designations": [],
               "agent_rating": 5,
-              "settings": {
-                "share_contacts": false,
-                "full_access": false,
-                "display_listings": true,
-                "far_override": true,
-                "show_stream": true,
-                "terms_of_use": true,
-                "has_dotrealtor": false,
-                "display_sold_listings": true,
-                "display_price_range": true,
-                "display_ratings": true,
-                "loaded_from_sb": true,
-                "broker_data_feed_opt_out": false,
-                "unsubscribe": {
-                  "autorecs": false,
-                  "recapprove": false,
-                  "account_notify": false
-                },
-                "cfb_wizard_step": "account_integration",
-                "new_feature_popup_closed": {
-                  "agent_left_nav_avatar_to_profile": false
-                },
-                "profile_wizard": {
-                  "realsatisfied_opt_out": false,
-                  "tt_opt_out": false
-                },
-                "reviews_opt_out": {
-                  "rs": false,
-                  "rdc": false
-                }
-              },
               "office_name": "NextHome Sally Love Real Estate"
             }
-          ],
-          "team": {
-            "web_url": "https://www.realtor.com/realestateteam/Your-24-7-Team_Villages_FL_3910193",
-            "id": "5dd9cb5f64114000138e537c",
-            "name": "Your 24/7 Team",
-            "photo": {
-              "href": "https://ap.rdcpix.com/1148621195/fd839220e67f16349958166f05f873d6o-c0s.jpg"
-            },
-            "bio": "\nJayne Marvin\u2019s background started in a small family car dealership in upstate New York. Life lessons such as honesty, integrity, hard work and valuing people formed character qualities that are integral in\nthe real estate venue. Jayne acquired her Real Estate license in 2010 when she went to work for Properties of The Villages as an assistant. From there, she became an independent Realtor.  She went on to win \u201cRookie of the Year\u201d in 2013 and was nominated as one of three in the nation.\n\nKris DiLeva\u2019s experiences are vast. It began with operating a successful lemonade stand during her \u201ctween\u201d years. She then acquired 13 years of experience with a consumer products company in Sales and\nMarketing. This led to creating and operating three successful restaurant ventures. During the same time, Kris acquired an interest in the design of log homes and transforming those visions into their construction. Each venture required determination and an ability to think \u201coutside the box\u201d. The success of both ventures\u2019 success stemmed from atypical marketing and design strategies.\n\n\nLinda Engelbrecht\u2019s  background started when her parents bought a gift shop when she was in high school. This was the start of Linda\u2018s development in sales and marketing.  She progressed to management, then program administrator to a local nonprofit health service provider.   Upon relocation to The Villages in 2004, she acquired her real estate license. Her individual success will be a great addition to Your 24/7 Team.\n\n\n",
-            "advertiser_id": 3910193
-          },
-          "lang": {
-            "ldp_content": {
-              "email_sent": "Your email has been sent.",
-              "go_to_post": "Go to post to",
-              "recomm_about": "about",
-              "recomm_almost": "almost",
-              "recomm_over": "over",
-              "recomm_years": "years ago",
-              "social_before": "",
-              "social_ago": " ago",
-              "social_posted": "Posted",
-              "social_last_year": " last year",
-              "not_yet_rated": "Not Rated Yet",
-              "ask_a_question": "Ask a Question",
-              "write_a_review": "Rate and write a review",
-              "write_a_review_lower": "write a review",
-              "recommend": "Recommend",
-              "recommend_me": "Recommend me",
-              "me": "Me",
-              "contact_info": "Contact Info",
-              "share": "Share",
-              "about": "About",
-              "video": "Video",
-              "listing_activity": "Listing Activity",
-              "ratings_reviews": "Ratings & Reviews",
-              "recommendations": "Recommendations",
-              "recommendations_lower": "recommendations",
-              "local_expertise": "Local Expertise",
-              "back_to_search": "Back to Search",
-              "about_listing_activities": "About Listing Activity Ratings & Reviews Recommendations Local Expertise",
-              "agents": "Agents",
-              "edit_this_profile": "Edit this profile",
-              "years_of_experience": "Years of Experience",
-              "experience": "Experience",
-              "small_year": "year",
-              "small_years": "years",
-              "month": "month",
-              "years": "years",
-              "months": "months",
-              "specializations": "Specializations",
-              "areas_served": "Areas served",
-              "slogan": "Slogan",
-              "price_range": "Price range (last 24 months)",
-              "brokerage": "Brokerage",
-              "properties": "Properties",
-              "view_all": "View All",
-              "for_sale": "For sale",
-              "for_rent": "For Rent",
-              "recently_sold": "Recently Sold",
-              "open_house": "Open House",
-              "open_houses": "Open Houses",
-              "ratings_and_review": "Ratings and reviews",
-              "not_yet_reviewed": "No reviews provided yet.",
-              "not_yet_reviewed_2nd": "Did this agent help with your home?",
-              "not_yet_recommended": "No recommendations provided yet.",
-              "share_your_experience": "Share your experience",
-              "with_this_agent": "with this agent.",
-              "ask_a_realtor": "Ask a REALTOR\u00ae",
-              "get_in_touch_with": "Get in touch with",
-              "right_now": "right now!",
-              "your_name": "Full Name",
-              "your_email": "Email",
-              "your_message": "Message",
-              "enter_message_placeholder": "Message",
-              "enter_name": "Enter Name",
-              "enter_email": "Enter Email",
-              "enter_phone": "Phone",
-              "your_phone": "Phone",
-              "send_email": "Send email",
-              "send": "Send",
-              "cancel": "Cancel",
-              "provide_review_and_rating": "Provide a Rating and Review",
-              "transaction_and_persional_information": "Transaction and Personal Information",
-              "enter_rating_and_review": "Enter Rating and Review",
-              "transaction": "Transaction",
-              "provide_details_of_property": "Provide details about the property you bought or sold",
-              "transaction_year": "Transaction Year",
-              "year": "Year",
-              "property_address": "Property address",
-              "select_a_state": "Select a State",
-              "zip": "Zip",
-              "why_this_information": "Why do I need to provide this information?",
-              "confirmation_of_work_1": "I confirm that I worked with",
-              "confirmation_of_work_2": "in the buying or selling of this property.",
-              "personal_information": "Personal Information",
-              "basic_info_about_yourself": "Provide some basic information about yourself",
-              "you_were_a": "You were a",
-              "your_phone_nunmber": "Your phone number",
-              "optional": "optional",
-              "go_to_step": "Go to Step",
-              "this_field_is_required": "This field is required.",
-              "rate_and_review_your_realtor": "Rate and Review Your REALTOR",
-              "overall_rating": "Overall rating",
-              "market_expertise": "Market expertise",
-              "responsiveness": "Responsiveness",
-              "negotiation_skills": "Negotiation skills",
-              "professionalismCommunication": "Professionalism and communication",
-              "click_to_market_expertise": "Click to give Market Expertise 1 starClick to give Market Expertise 1 star",
-              "click_to_responsiveness": "Click to give Responsiveness 1 starClick to give Responsiveness 1 star",
-              "click_to_negotiaon_skills": "Click to give Negotiation Skills 1 starClick to give Negotiation Skills 1 star",
-              "click_to_professionalism_communication": "Click to give Professionalism & Communication 1 starClick to give Professionalism & Communication 1 star",
-              "provide_a_review_about_experience": "Provide a review about your experience",
-              "help_to_publish_review": "How do I help ensure my review is published?",
-              "we_want_to_publish_your_review": "We want to publish your review so please",
-              "use_this_space_for_transaction": "Use this space only to write about the agent's services in the transaction.",
-              "refrain_from_inappropriate_languages": "Refrain from including inappropriate language.",
-              "limit_your_review_to_agent_service_provided": "Limit your review to information relevant to the services provided by the agent, and refrain from personal attacks or insults.",
-              "do_not_use_this_form_for_inquiry": "Do not use this form for inquiries.",
-              "right_to_publish_reviews": "We reserve the right to publish or not publish reviews at our discretion",
-              "your_nickname_displayed": "Your nickname will be displayed in connection with your review if it is published.",
-              "nickname": "Nickname",
-              "display_name": "Display Name",
-              "make_a_recommendation": "Make a Recommendation",
-              "your_recommendation": "Your Recommendation",
-              "view_website": "View Website",
-              "share_on_email": "Share on Email",
-              "share_on_facebook": "Share on Facebook",
-              "share_on_twitter": "Share on Twitter",
-              "load_older_posts": "Show more social media posts",
-              "load_more_recommendations": "Show more",
-              "sold_data_from_MLS_areas": "At this time, realtor.com\u00ae does not display all sold data from all MLS areas, and not all listings sold within the last 24 months will be displayed. Sold listings older than 24 months are not shown.",
-              "state": "State",
-              "price_unavailable": "Price Unavailable",
-              "languages": "Languages",
-              "designations": "Designations",
-              "certifications": "Certifications",
-              "none_reported": "None Reported",
-              "team": "Team",
-              "claim_this_profile": "Claim This Profile",
-              "here": "here",
-              "to_write_a_review_click": "To write a review click",
-              "return_to_search_results": "Return to search results",
-              "show_team_activity": "Show Team Activity",
-              "sunday_january_2": "Sunday, January 2",
-              "title_of_activity": "Title of activity",
-              "share_this_page": "Share This Page",
-              "recipients_email": "Recipient's Email",
-              "custom_message": "Custom Message",
-              "email_success_message": "You successfully emailed this page.",
-              "local_checkins": "Local Checkins",
-              "bolg_and_facebook": "Social media posts",
-              "no_team_name": "No team name provided",
-              "no_team_description": "No team bio provided",
-              "close": "Close",
-              "call_agent": "Call Agent",
-              "submit": "Submit",
-              "with": "with",
-              "buyer_rating": "I was a buyer",
-              "seller_rating": "I was a seller",
-              "has_not_provided_bio_yet": "hasn't provided a bio yet.",
-              "make_recommendation": "Make Recommendation",
-              "recommendation_success_message": "You successfully submitted your recommendation.",
-              "successful_submission_message": "You successfully messaged your selected agents. Expect a response soon!",
-              "home_value": "Home Value",
-              "home_worth": "How much is My Home Worth? Get a free home value report for your neighborhood.",
-              "please_enter_a_zip": "Please enter a zip code",
-              "street_address": "Street address",
-              "page_not_found": "We couldn't find the page you were looking for. Please ensure that the URL you've typed is correct and try again.",
-              "load_more_activity": "Load More Activity",
-              "step": "Step",
-              "map_legend": "Map Legend",
-              "map_box": "Mapbox",
-              "open_street_map": "OpenStreetMap",
-              "improve_this_map": "Improve this map",
-              "reviewed_by": "Reviewed by",
-              "sourced_by": "Sourced by",
-              "rating_description": "Rating Description",
-              "rating_stars": "Rating Stars",
-              "client_rating": "rating",
-              "based_on": "Based on",
-              "load_more_reviews": "Show more",
-              "completed": "Completed",
-              "transaction_and_property_info": "Transaction and Property info",
-              "review_and_submit": "Review and Submit",
-              "rate_and_review_your_realtor_step_1": "Rate and Review Your REALTOR (Step 1)",
-              "please_rate_with_each_categories": "Please rate Amy Smith in each of these categories",
-              "education_and_share_knowledge": "Educate and share knowledge",
-              "avatars": "avatars",
-              "why_personal_information": "Why do I need to provide my personal information? Reviews are verified and have to be associated with a client selling or buying a home.",
-              "more_than_one_home_with_same_agent": "If you bought or sold more than one home with the same agent you can provide a separate review for each",
-              "about_us": "About Us",
-              "confirmation_on_transaction": "I confirm that amy Smith represented me in the buying or selling of this property.",
-              "buyer": "Buyer",
-              "seller": "Seller",
-              "your_review": "Your review",
-              "this_is_the_form_summary": "this is the form summary",
-              "sucessful_review_submission": "You successfully submitted your review.",
-              "previous_step": "Previous Step",
-              "next_step": "Next Step",
-              "your_email_address": "Your email address",
-              "publish_client_associated_review": "We publish only review that are associated with a client selling or buying a home, and we use this information to verify that your review meets these standards. We may need to contact you to verify the review. By submitting this information, you agree that we may contact you for this purpose. We will not display your name, email address or phone number in connection with your review.",
-              "site_link": "Realtor.com",
-              "privacy_policy": "Privacy Policy",
-              "thank_you": "Thank You",
-              "thanks_for_review": "Thank you for submitting a review. The review will show up on the agent's profile within the next few days.",
-              "check_email_confirmation": "Please check your email for confirmation.",
-              "address_error": "Address Error",
-              "entered_address_not_valid": "Sorry, that address cannot be found in our property database. Please try again or submit a recommendation for the agent.",
-              "try_again": "Try again",
-              "continue_without_validation": "Continue without validation",
-              "read_more": "Read more",
-              "show_more": "Show more",
-              "show_less": "Show less",
-              "review": "Review",
-              "reviews": "reviews",
-              "sold": "Sold",
-              "pendingContingent": "PENDING/CONTINGENT",
-              "pending": "PENDING",
-              "contingent": "CONTINGENT",
-              "for_sale_property_type": "For Sale",
-              "for_rent_property_type": "For Rent",
-              "recently_sold_property_type": "Recently Sold",
-              "open_house_property_type": "Open Houses",
-              "a_home_in": "a home in",
-              "in": "in",
-              "buyer_relation": "purchased",
-              "seller_relation": "sold",
-              "renter_relation": "rented",
-              "recommended": "recommended",
-              "a_home_with": "a home with",
-              "after_having": "after having",
-              "a_home": "a home",
-              "verified_by": "Verified by",
-              "view_more_members": "View More Members",
-              "bad_word_found": "Your input is invalid.",
-              "team_information": "Team information",
-              "team_name": "Team Name",
-              "team_bio": "Team Bio",
-              "other_team_members": "Team Members",
-              "reviews_service": {
-                "rating": "Overall rating",
-                "responsiveness": "Responsiveness",
-                "negotiation_skills": "Negotiation Skills",
-                "professionalism_communication": "Professionalism & Communication",
-                "market_expertise": "Market Expertise"
-              },
-              "source_id": {
-                "RS": "RealSatisfied.com",
-                "LNKDIN": "LinkedIn",
-                "TT": "Testimonial Tree",
-                "QSC": "RatedAgent",
-                "RDC": "Realtor.com"
-              },
-              "recommendations_source_id": {
-                "RS": "RealSatisfied",
-                "LNKDIN": "LinkedIn",
-                "TT": "Testimonial Tree",
-                "QSC": "RatedAgent",
-                "RDC": "Realtor.com"
-              }
-            }
-          }
+          ]
         },
         "profileData": {
-          "_id": "566b2816bb954c01006758f3",
-          "profile_name": "Jayne Marvin                       -agent",
-          "profile_description": "default agent role for Jayne Marvin",
-          "role": "agent",
-          "default": true,
-          "fulfillment_id": 2117405,
-          "nrds_id": "776694937",
-          "fullname": "Jayne Marvin , Kris Dileva, Linda Engelbrecht",
-          "firstname": "Jayne",
-          "middlename": "",
-          "lastname": "Marvin",
-          "nickname": "",
-          "suffixname": "",
-          "title": "Agent",
-          "far_override": "true",
-          "phones": [
-            {
-              "type": "Mobile",
-              "number": "3522055379",
-              "ext": "",
-              "key": "phone_1"
-            },
-            {
-              "type": "Office",
-              "number": "3527510247",
-              "ext": "",
-              "key": "phone_2"
-            }
-          ],
           "emails": [],
-          "address": {
-            "line": "840 CR 446",
-            "city": "The Villages",
-            "postal_code": "32159",
-            "state_code": "FL",
-            "state": "",
-            "country": "US"
-          },
-          "social_media": [
-            {
-              "type": "facebook",
-              "href": "https://www.facebook.com/app_scoped_user_id/10202855925343059/"
-            }
-          ],
           "website": "http://www.the247team.com/",
-          "first_year": 1999,
           "bio": "Jayne Marvin\u2019s background started in a small family car dealership in upstate New York. Life lessons such as honesty, integrity, hard work and valuing people formed character qualities that are integral in\nthe real estate venue. Jayne acquired her Real Estate license in 2010 when she went to work for Properties of\nThe Villages as an assistant. From there, she became an independent Realtor.  She went on to win \u201cRookie of the Year\u201d in 2013 and was nominated as one of three in the nation.\n\nKris DiLeva\u2019s experiences are vast. It began with operating a successful lemonade stand during her \u201ctween\u201d years. She then acquired 13 years of experience with a consumer products company in Sales and\nMarketing. This led to creating and operating three successful restaurant ventures. During the same time, Kris acquired an interest in the design of log homes and transforming those visions into their construction. Each venture required determination and an ability to think \u201coutside the box\u201d. The success of both ventures\u2019 success stemmed from atypical marketing and design strategies.\n\n\nLinda Engelbrecht\u2019s  background started when her parents bought a gift shop when she was in high school. This was the start of Linda\u2018s development in sales and marketing.  She progressed to management, then program administrator to a local nonprofit health service provider.   Upon relocation to The Villages in 2004, she acquired her real estate license. Her individual success will be a great addition to Your 24/7 Team.\n\n\nYour are going to \"LOVE\"  Your 24/7 Team!",
           "ratings": {
             "overall_rating": 5,
@@ -685,16 +272,6 @@
           "recommendations": {
             "count": 131
           },
-          "mls": [
-            {
-              "abbreviation": "FAR_1F0F1B85",
-              "primary": true,
-              "type": "A",
-              "member": {
-                "id": "FAR_139F12D612D413FF0032"
-              }
-            }
-          ],
           "photo": {
             "href": "https://ap.rdcpix.com/814514207/2b71f4b8ee0d782cd696b43780b68061a-e0s.jpg"
           },
@@ -778,83 +355,13 @@
             },
             "video": ""
           },
-          "record_status": "active",
-          "debug": false,
-          "id": "566b2816bb954c01006758f2",
           "background_photo": {
             "href": "https://ap.rdcpix.com/1932288563/4c2f79f4bf581af4cee58694e5339a6cg-c0s.jpg"
-          },
-          "settings": {
-            "reviews_opt_out": {
-              "rs": false,
-              "rdc": false
-            },
-            "share_contacts": false,
-            "full_access": false,
-            "display_listings": true,
-            "far_override": true,
-            "show_stream": true,
-            "terms_of_use": true,
-            "has_dotrealtor": false,
-            "display_sold_listings": true,
-            "display_price_range": true,
-            "display_ratings": true,
-            "loaded_from_sb": true,
-            "broker_data_feed_opt_out": false,
-            "unsubscribe": {
-              "autorecs": false,
-              "recapprove": false,
-              "account_notify": false
-            },
-            "cfb_wizard_step": "account_integration",
-            "new_feature_popup_closed": {
-              "agent_left_nav_avatar_to_profile": false
-            },
-            "profile_wizard": {
-              "realsatisfied_opt_out": false,
-              "tt_opt_out": false
-            }
-          },
-          "social_connections": {
-            "facebook": {
-              "settings": {
-                "show_checkins": true
-              },
-              "pages": [
-                {
-                  "personal_page": true,
-                  "picture": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=10202855925343059&height=50&width=50&ext=1585183435&hash=AeRuqfftI_Cx7w4G",
-                  "name": "Jayne Newfang Marvin",
-                  "id": "10202855925343059",
-                  "settings": {
-                    "show_stream": false,
-                    "show_link": false
-                  },
-                  "link": ""
-                }
-              ]
-            },
-            "blog_rss": {
-              "rss": "",
-              "settings": {
-                "show_stream": true
-              },
-              "link": ""
-            },
-            "connected_to_sb": true
           },
           "meta": {
             "last_update_date": "2024-01-04T15:43:10.765Z"
           },
-          "slogan": "You are going to \"LOVE\" Your 24/7 Team",
-          "designations": [],
-          "languages": [],
           "licenses": [],
-          "party_id": 58296456,
-          "dotrealtor": {
-            "firstname": "",
-            "lastname": ""
-          },
           "phone_list": {
             "phone_1": {
               "type": "Mobile",
@@ -867,28 +374,11 @@
               "ext": ""
             }
           },
-          "eligible_for_courtesy_leads": true,
-          "brokerage_fulfillment_id": 3910582,
-          "not_updatable_by": [],
-          "agent_represents": {
-            "seller": true,
-            "buyer": true
-          },
-          "viewerRole": "agent",
-          "autoFixed": true,
           "fbLastUpdate": 1527435364660,
-          "photoEntityKey": "2117405_1574551887431",
-          "coverPhotoEntityKey": "2117405_1526319009844",
-          "first_month": 8,
-          "mls_history": [],
-          "user_languages": [],
-          "areas_served": "Lake, Marion, Sumter",
           "team": {
             "fulfillment_id": 3910193,
             "name": "Your 24/7 Team"
-          },
-          "feed_licenses": [],
-          "skip_set_for_update": false
+          }
         },
         "feedbackData": [
           {
