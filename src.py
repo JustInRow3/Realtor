@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 import urllib.parse
 from requests_html import HTMLSession
-
+import json
+import pandas as pd
+from pandas import json_normalize
 
 url_agentlist = 'https://www.realtor.com/realestateagents/'
 url_absolute = 'https://www.realtor.com'
@@ -74,16 +76,33 @@ def get_profiledetails(link):
         r = session.get(link_, headers=headers_fagents,
                         timeout=10)
         r.session.close()
-        r.html.render(sleep=2, timeout=20)
-        soup = BeautifulSoup(r.html.html, 'html.parser')
+        soup = BeautifulSoup(r.html.raw_html, features='lxml')
+        time.sleep(1)
         fullname = ifexist(soup, 'h2', 'class', "base__StyledType-rui__sc-108xfm0-0 bICTqR")
         photo = soup.find('img', class_="jsx-832586154 profile-img").get('src')
         company = ifexist(soup, 'p', 'class', "base__StyledType-rui__sc-108xfm0-0 fgiRuk")
         ratings = ifexist(soup, 'span', 'class', "jsx-832586154 review")
         review = ifexist(soup, 'span', 'class', "jsx-832586154 gray-font")
         recommended = ifexist(soup, 'span', 'class', "jsx-832586154 review pr-2")
-        section = soup.findAll(soup, 'div', 'class', 'jsx-787916864 preview-contact-details')
-        listings = ifexist(soup, 'div', 'data-testid', "component-contactDetails")
+        section_mobile = ifexist_href(soup, 'a', 'class', "jsx-832586154 track-my-clicks")
+        section_website = ifexist_href(soup, 'a', 'class', "jsx-787916864 website-link")
+        section_address = ifexist(soup, 'div', 'class', "jsx-1192639173 better-homes-and-gar-icon-right")
+        section_share = ifexist_href(soup, 'a', 'class', "jsx-39586221 track-my-clicks mobile-number")
+        script_data = soup.find('script', id='__NEXT_DATA__')
+        if script_data:
+            script_data_website = script_data.text
+            json_data = json.loads(script_data_website)
+            # # Write JSON data to the file
+            # with open('all_out.json', 'w') as json_file:
+            #     json.dump(json_data, json_file, indent=2)
+            flattened_data = json_normalize((((json_data.get('props', {})).get('initialReduxState', {})).get('profile', {})).get('agentdetail', {}))
+            flattened_data.to_excel('output.xlsx', index=False)
+            # website = json_data.get()
+            time.sleep(1)
+        # section = soup.findAll('a', class_="jsx-832586154 track-my-clicks")
+        # section = soup.findAll(soup, 'div', 'class', 'jsx-787916864 preview-main-content-form')
+        # listings = ifexist(soup, 'div', 'data-testid', "component-contactDetails")
+        print(soup.prettify(formatter='html'))
         time.sleep(1)
         # phone = soup.find('p', class_="jsx-787916864 d-flex")
         # mobile = soup.find('span', class_="jsx-787916864 mobile-number")
@@ -106,6 +125,14 @@ def ifexist(soup, tag, tag_class=None, value_=None):
         return element.text
     else:
         return None
+def ifexist_href(soup, tag, tag_class=None, value_=None):
+    element = soup.find(tag, attrs={tag_class: value_})
+    if element:
+        return element.get('href')
+    else:
+        return None
+
+
 
 
 # session = HTMLSession()
