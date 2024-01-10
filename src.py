@@ -68,52 +68,23 @@ def try_locationlist(list, head):
 
 def get_profiledetails(link):
     link_ = urllib.parse.urljoin(url_absolute, link)
-    # req = Request(link_, headers=head)
     try:
-        # web_byte = urlopen(req, timeout=10)
-        # webpage = web_byte.read().decode('utf-8')
         session = HTMLSession()
         r = session.get(link_, headers=headers_fagents,
                         timeout=10)
         r.session.close()
         soup = BeautifulSoup(r.html.raw_html, features='lxml')
         time.sleep(1)
-        fullname = ifexist(soup, 'h2', 'class', "base__StyledType-rui__sc-108xfm0-0 bICTqR")
-        photo = soup.find('img', class_="jsx-832586154 profile-img").get('src')
-        company = ifexist(soup, 'p', 'class', "base__StyledType-rui__sc-108xfm0-0 fgiRuk")
-        ratings = ifexist(soup, 'span', 'class', "jsx-832586154 review")
-        review = ifexist(soup, 'span', 'class', "jsx-832586154 gray-font")
-        recommended = ifexist(soup, 'span', 'class', "jsx-832586154 review pr-2")
-        section_mobile = ifexist_href(soup, 'a', 'class', "jsx-832586154 track-my-clicks")
-        section_website = ifexist_href(soup, 'a', 'class', "jsx-787916864 website-link")
-        section_address = ifexist(soup, 'div', 'class', "jsx-1192639173 better-homes-and-gar-icon-right")
-        section_share = ifexist_href(soup, 'a', 'class', "jsx-39586221 track-my-clicks mobile-number")
         script_data = soup.find('script', id='__NEXT_DATA__')
         if script_data:
             script_data_website = script_data.text
             json_data = json.loads(script_data_website)
-            # # Write JSON data to the file
-            # with open('all_out.json', 'w') as json_file:
-            #     json.dump(json_data, json_file, indent=2)
-            flattened_data = json_normalize((((json_data.get('props', {})).get('initialReduxState', {})).get('profile', {})).get('agentdetail', {}))
-            flattened_data.to_excel('output.xlsx', index=False)
-            # website = json_data.get()
-            time.sleep(1)
-        # section = soup.findAll('a', class_="jsx-832586154 track-my-clicks")
-        # section = soup.findAll(soup, 'div', 'class', 'jsx-787916864 preview-main-content-form')
-        # listings = ifexist(soup, 'div', 'data-testid', "component-contactDetails")
-        print(soup.prettify(formatter='html'))
+            clean_json = format_json(json_data)
+
+            # Write the formatted JSON data to the file
+            with open('try.json', 'w') as json_file:
+                json_file.write(clean_json)
         time.sleep(1)
-        # phone = soup.find('p', class_="jsx-787916864 d-flex")
-        # mobile = soup.find('span', class_="jsx-787916864 mobile-number")
-        # website = soup.find('a', class_="jsx-787916864 website-link")
-        # location = soup.find('p', class_="jsx-1192639173 addressspace")
-        # experience = soup.find('div', class_="jsx-1251629822 preview-profile-info preview-profile-info-right")
-        # credentials =
-        # pricerange = soup.find('div', class_="jsx-1251629822 preview-profile-info-left")
-        # areaserve = soup.find('div', class_="jsx-1418565729 preview-more-details-profile-mian")
-        # specialization = soup.find('ul', class_="jsx-1418565729 data preview-more-details-profile-li1")
-        # language = soup.find('li', class_="jsx-1418565729")
 
     except urllib.error.URLError as e:
         print(f"Error: {e}")
@@ -133,6 +104,39 @@ def ifexist_href(soup, tag, tag_class=None, value_=None):
         return None
 
 
+def format_json(data_json):
+    """
+    Format JSON data using a template.
+
+    Parameters:
+    - template_json (dict): Template JSON structure.
+    - data_json (dict): Actual data to be merged with the template.
+
+    Returns:
+    - formatted_json (str): Formatted JSON string.
+    """
+    # Read data from the JSON file
+    with open('template2.json', 'r') as json_file:
+        template_json = json.load(json_file)
+
+    # Create a copy of the template to avoid modifying it directly
+    formatted_json = template_json.copy()
+
+    # Function to recursively update the template
+    def update_template(template, data):
+        for key, value in template.items():
+            if isinstance(value, dict) and key in data and isinstance(data[key], dict):
+                update_template(value, data[key])
+            else:
+                template[key] = data.get(key, value)
+    # Update the template with the actual data
+    update_template(formatted_json, data_json)
+
+    # Convert the merged dictionary to a formatted JSON string
+    formatted_json_str = json.dumps(formatted_json, indent=2)
+
+    print(formatted_json_str)
+    return formatted_json_str
 
 
 # session = HTMLSession()
