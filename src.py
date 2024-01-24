@@ -1,4 +1,5 @@
 import html
+import math
 import time
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
@@ -24,16 +25,15 @@ headers_fagents = {
     'Referer': 'https://www.realtor.com/realestateagents'}
 
 
-def get_agentlist(path, head):
+def get_locationlist(path):
     session = HTMLSession()
     location_links = []  # initialize location list
     # req = Request(path, headers=head)
     try:
         r = session.get(path, headers=headers_fagents,
                         timeout=10)
-        # web_byte = urlopen(req, timeout=10)
-        # webpage = web_byte.read().decode('utf-8')
-        soup = BeautifulSoup(r.html, 'html.parser')
+        r.session.close()
+        soup = BeautifulSoup(r.html.raw_html, features='lxml')
         ul = soup.findAll('li', class_="ListItemstyles__StyledListItem-rui__zdhuws-0 fVswxu")
         for link in ul:
             link_true = link.find('a', class_="base__StyledAnchor-rui__ermeke-0 eMbFNh", href=True)['href']
@@ -46,26 +46,48 @@ def get_agentlist(path, head):
         print(f"Error: {e}")
 
 
-def try_locationlist(list, head):
+def try_locationlist(list):
     for _ in list:
+        agentid = []
         link_ = urllib.parse.urljoin(url_absolute, _)
-        req = Request(link_, headers=head)
         try:
-            web_byte = urlopen(req, timeout=10)
-            webpage = web_byte.read().decode('utf-8')
-            soup = BeautifulSoup(webpage, 'html.parser')
+            session = HTMLSession()
+            r = session.get(link_, headers=headers_fagents,
+                            timeout=10)
+            r.session.close()
+            soup = BeautifulSoup(r.html.raw_html, features='lxml')
+            # print(soup.prettify())
             # Get profiles
             profiles = soup.findAll('a', class_="jsx-3873707352")
-            location = soup.find('h2', class_="base__StyledType-rui__sc-108xfm0-0 eMHlSD")
-            hrefs_profiles = [link.get('href') for link in profiles if len(link.get('href').split('/')) == 3]
-            hrefs_profiles.insert(0, location.text)
-            set(hrefs_profiles)
-            print(f'Profiles:', hrefs_profiles)
-            time.sleep(2)
+            allpage = int((soup.find('span', class_="jsx-1552726949").text).split()[0])
+            if allpage > 20:
+                pages = math.ceil(allpage / 20)
+            else:
+                pages = 1
+            for _ in range(pages):
+                get_agentids(_)
         except urllib.error.URLError as e:
             print(f"Error: {e}")
 
-
+def get_agentids(path):
+    session = HTMLSession()
+    r = session.get(path, headers=headers_fagents,
+                    timeout=10)
+    r.session.close()
+    soup = BeautifulSoup(r.html.raw_html, features='lxml')
+    # print(soup.prettify())
+    # Get profiles
+    profiles = soup.findAll('a', class_="jsx-3873707352")
+    hrefs_profiles = [link.get('href') for link in profiles if len(link.get('href').split('/')) == 3]
+    hrefs_profiles = set(hrefs_profiles)
+    print(f'Profiles:', hrefs_profiles)
+    script_data = soup.find('script', id='__NEXT_DATA__')
+    if script_data:
+        script_data_website = script_data.text
+        json_data = json.loads(script_data_website)
+        agents = json_data['props']['pageProps']['pageData']['agents']
+        agentid.extend([i['id'] for i in agents])
+    return agentid
 def get_profiledetails(link):
     link_ = urllib.parse.urljoin(url_absolute, link)
     try:
