@@ -1,4 +1,4 @@
-import html
+import re
 import math
 import time
 from bs4 import BeautifulSoup
@@ -8,15 +8,23 @@ from requests_html import HTMLSession
 import json
 import pandas as pd
 from pandas import json_normalize
+from ratelimit import limits, sleep_and_retry
+from retrying import retry
+from ast import literal_eval
+import sys
+from fake_useragent import UserAgent
 
+non_decimal = re.compile(r'[^\d.]+')
 url_agentlist = 'https://www.realtor.com/realestateagents/'
 url_absolute = 'https://www.realtor.com'
+ua = UserAgent()
 
-headers_fhome = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'Cache-Control': 'max-age=0',
-    'Referer': 'https://www.realtor.com/'}
+headers_fhome = {'User-Agent': ua.random}
+# headers_fhome = {
+#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+#     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+#     'Cache-Control': 'max-age=0',
+#     'Referer': 'https://www.realtor.com/'}
 
 headers_fagents = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -26,15 +34,42 @@ headers_fagents = {
 
 
 def get_locationlist(path):
-    session = HTMLSession()
-    location_links = []  # initialize location list
-    # req = Request(path, headers=head)
-    try:
-        r = session.get(path, headers=headers_fagents,
+    @sleep_and_retry
+    @limits(calls=5, period=1)  # 5 requests per second
+    # Define a retry decorator with exponential backoff
+    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000, stop_max_attempt_number=5)
+    def get_soup(path, head):
+        session = HTMLSession()
+        r = session.get(path, headers=head,
                         timeout=10)
         r.session.close()
-        soup = BeautifulSoup(r.html.raw_html, features='lxml')
-        ul = soup.findAll('li', class_="ListItemstyles__StyledListItem-rui__zdhuws-0 fVswxu")
+        return BeautifulSoup(r.html.raw_html, features='lxml')
+    location_links = []
+
+    try:
+        i = 0
+        while i <= 5:
+            headers_fhome = {'User-Agent': ua.random}
+            soup = get_soup(path, headers_fhome)
+            script_data = soup.find('script', id='__NEXT_DATA__')
+            if script_data:
+                script_data_website = script_data.text
+                json_data = json.loads(script_data_website)
+                clean_json = format_json(json_data)
+
+                # Write the formatted JSON data to the file
+                with open('loclist.json', 'w') as json_file:
+                    json_file.write(clean_json)
+                break
+            else:
+                pass
+            # ul = soup.findAll('li', class_="ListItemstyles__StyledListItem-rui__zdhuws-0 fVswxu")
+            # if ul:
+            #     pass
+            # else:
+            #     break
+            i += 1
+            time.sleep(3)
         for link in ul:
             link_true = link.find('a', class_="base__StyledAnchor-rui__ermeke-0 eMbFNh", href=True)['href']
             if link_true.split('/')[1] == 'realestateagents':
@@ -48,46 +83,75 @@ def get_locationlist(path):
 
 def try_locationlist(list):
     for _ in list:
-        agentid = []
+        print('\nLocation: ' + str(_))
+        location_agent = {}
+        allagentid = []
         link_ = urllib.parse.urljoin(url_absolute, _)
-        try:
+        @sleep_and_retry
+        @limits(calls=5, period=1)  # 5 requests per second
+        # Define a retry decorator with exponential backoff
+        @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000, stop_max_attempt_number=5)
+        def get_soup(path, head):
             session = HTMLSession()
-            r = session.get(link_, headers=headers_fagents,
+            r = session.get(path, headers=head,
                             timeout=10)
             r.session.close()
-            soup = BeautifulSoup(r.html.raw_html, features='lxml')
-            # print(soup.prettify())
+            return BeautifulSoup(r.html.raw_html, features='lxml')
+        try:
+            soup = get_soup(link_, headers_fagents)
             # Get profiles
-            profiles = soup.findAll('a', class_="jsx-3873707352")
-            allpage = int((soup.find('span', class_="jsx-1552726949").text).split()[0])
+            allpage = literal_eval(non_decimal.sub('', (soup.find('span', class_="jsx-1552726949").text).split()[0]))
+            print('Agents = ' + str(allpage))
             if allpage > 20:
                 pages = math.ceil(allpage / 20)
             else:
                 pages = 1
-            for _ in range(pages):
-                get_agentids(_)
+            for item in range(1, pages + 1):
+                sys.stdout.write('\r' + 'Page ' + str(item) + ' of ' + str(pages))
+                sys.stdout.flush()
+                # print('Page ' + str(item))
+                if item == 1:
+                    path = urllib.parse.urljoin(url_absolute, _)
+                else:
+                    page = str(_) + '/pg-' + str(item)
+                    # url/location/page
+                    path = urllib.parse.urljoin(url_absolute, page)
+                allagentid = get_agentids(path, allagentid)
+                time.sleep(1.5)
+            allagentid = set(allagentid)
+            location_agent[_] = allagentid
         except urllib.error.URLError as e:
             print(f"Error: {e}")
+            print('Error in: ' + str(_))
+    return location_agent
 
-def get_agentids(path):
-    session = HTMLSession()
-    r = session.get(path, headers=headers_fagents,
-                    timeout=10)
-    r.session.close()
-    soup = BeautifulSoup(r.html.raw_html, features='lxml')
-    # print(soup.prettify())
+
+def get_agentids(path, agentid):
+    @sleep_and_retry
+    @limits(calls=5, period=1)  # 5 requests per second
+    # Define a retry decorator with exponential backoff
+    @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000, stop_max_attempt_number=5)
+    def get_soup(pathx, head):
+        session = HTMLSession()
+        r = session.get(pathx, headers=head,
+                        timeout=10)
+        r.session.close()
+        return BeautifulSoup(r.html.raw_html, features='lxml')
     # Get profiles
-    profiles = soup.findAll('a', class_="jsx-3873707352")
-    hrefs_profiles = [link.get('href') for link in profiles if len(link.get('href').split('/')) == 3]
-    hrefs_profiles = set(hrefs_profiles)
-    print(f'Profiles:', hrefs_profiles)
-    script_data = soup.find('script', id='__NEXT_DATA__')
-    if script_data:
-        script_data_website = script_data.text
-        json_data = json.loads(script_data_website)
-        agents = json_data['props']['pageProps']['pageData']['agents']
-        agentid.extend([i['id'] for i in agents])
-    return agentid
+    try:
+        soup = get_soup(path, headers_fagents)
+        script_data = soup.find('script', id='__NEXT_DATA__')
+        if script_data:
+            script_data_website = script_data.text
+            json_data = json.loads(script_data_website)
+            agents = json_data['props']['pageProps']['pageData']['agents']
+            if agents:
+                agentid.extend([i['id'] for i in agents])
+                return agentid
+            else:
+                pass
+    except urllib.error.URLError as e:
+        print(f"Error: {e}")
 def get_profiledetails(link):
     link_ = urllib.parse.urljoin(url_absolute, link)
     try:
@@ -161,6 +225,3 @@ def format_json(data_json):
     return formatted_json_str
 
 
-# session = HTMLSession()
-# r = session.get('https://www.realtor.com/realestateagents/566b2816bb954c01006758f2', headers=headers_fagents, timeout=10)
-# time.sleep(1)

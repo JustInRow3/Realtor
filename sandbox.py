@@ -1,10 +1,8 @@
 import src
 
 #Flow
-# get_locationlist-->try_locationlist-->get_profiledetails
-
+# get_locationlist-->try_locationlist-->get_agentids-->get_profiledetails
+#
 locations = src.get_locationlist('https://www.realtor.com/realestateagents/')
-src.try_locationlist(locations)
+src.try_locationlist(locations) if locations else None
 
-
-#src.get_profiledetails('realestateagents/56c5959c7e54f70100225b53')
